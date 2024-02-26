@@ -1,0 +1,85 @@
+.auth-dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    height: min-content;
+    min-width: 280px;
+    max-width: 360px;
+    border-radius: 28px;
+
+    opacity: 0;
+    top: 50vh;
+
+    transition-property: opacity, top;
+    transition-duration: .42s;
+    transition-timing-function: ease-in-out;
+
+    --md-elevation-level: 3;
+
+    md-outlined-field::-webkit-outer-spin-button,
+    md-outlined-field::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &.active {
+        top: 0;
+        opacity: 1;
+    }
+
+    &.visible form {
+        opacity: 1;
+    }
+
+    &-title {
+        justify-self: center;
+        display: grid;
+        gap: 16px;
+        justify-items: center;
+        text-align: center;
+    }
+
+    &-actions {
+        justify-self: end;
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    form {
+        display: grid;
+        gap: 16px;
+
+        padding: 24px;
+        border-radius: inherit;
+        opacity: 0;
+
+        transition: opacity .14s ease-in-out;
+    }
+
+    label {
+        display: grid;
+        grid: 1fr / 48px 1fr;
+        align-items: start;
+        margin-top: -15px;
+
+        span.label {
+            padding-top: 15px;
+        }
+
+        span.error-text {
+            padding: 4px 16px 0;
+            grid-column: 1 / -1;
+        }
+    }
+
+    .recaptcha-widget {
+        display: grid;
+        justify-items: center;
+
+        .error-text {
+            padding: 4px 16px 0;
+            justify-self: start;
+        }
+    }
+}

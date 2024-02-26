@@ -1,0 +1,71 @@
+// ::-webkit-scrollbar {
+//     width: 10px;
+// }
+
+// ::-webkit-scrollbar-track {
+//     background: none;
+//     position: absolute;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//     background: gray; // var(--md-sys-color-outline-variant);
+//     background-clip: content-box;
+//     border: 3px solid transparent;
+//     border-radius: 8px;
+//     transition: all 0.2s ease-in-out;
+// }
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    overscroll-behavior: none;
+
+    --md-icon-font: 'Material Symbols Rounded';
+    --md-focus-ring-color: transparent;
+
+    --md-elevation-shadow-color: gray;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input[data-autocompleted] {
+    background-color: transparent !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+md-icon[filled] {
+    font-variation-settings: 'FILL' 1;
+}
+
+@size: {
+    mobile: 550px;
+    tablet: 930px;
+}
+
+// --------------------------------------------------------------------------------
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--md-sys-color-background);
+}
+
+#root {
+    filter: none;
+    transition: filter .48s ease-in-out;
+
+    &.blured {
+        filter: blur(15px) saturate(1.5);
+    }
+}
+
+@import './auth-dialog.less';
+@import './header.less';

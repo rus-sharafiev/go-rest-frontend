@@ -1,0 +1,56 @@
+header {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 48px;
+
+    display: grid;
+    grid: 1fr / min-content 1fr min-content;
+    place-items: center;
+    padding: 12px 24px;
+
+    --md-elevation-level: 0;
+
+    svg {
+        height: 100%;
+    }
+
+    md-icon-button {
+        grid-column: -2 / -1;
+        margin: -8px;
+    }
+
+    --md-menu-container-color: var(--md-sys-color-surface);
+    --md-menu-item-selected-container-color: var(--md-sys-color-primary-container);
+
+    div.account-icon {
+        grid-column: -2 / -1;
+        margin: -8px;
+        position: relative;
+
+        md-list {
+            position: absolute;
+            top: 60%;
+            right: 100%;
+            width: 200px;
+
+            --md-elevation-level: 2;
+
+            opacity: 0;
+            transition: opacity .24s ease-in-out;
+
+            md-list-item {
+                overflow: hidden;
+                max-height: 0;
+                transition: max-height .24s ease-in-out;
+            }
+        }
+
+        &.menu-opened md-list {
+            opacity: 1;
+
+            md-list-item {
+                max-height: 56px;
+            }
+        }
+    }
+}
