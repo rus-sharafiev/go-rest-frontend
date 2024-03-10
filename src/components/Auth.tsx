@@ -5,6 +5,8 @@ import { createPortal } from "react-dom"
 import { Form, Formik, FormikHelpers } from "formik"
 import { MdFormikField } from "./ui/MdFormikField"
 import { object as yupObject, string as yupString, ref as yupRef, boolean as yupBoolean, number as YupNumber } from "yup"
+import FingerprintJS from "@fingerprintjs/fingerprintjs"
+import api from "../utils"
 // @types
 import { LoginDto, SignUpDto, VerifyEmailDto } from "../@types/auth"
 import { FetchApiError } from "@russh/fetch-api"
@@ -106,9 +108,14 @@ export const Auth: FC = () => {
     // --------------------------------------------------------------------------------
 
     useEffect(() => {
-        dispatch(getAuthUser())
-            .unwrap()
-            .catch(() => setIsActive(true))
+        FingerprintJS.load()
+            .then(agent => agent.get())
+            .then(result => api.setAuthHeader(result.visitorId))
+            .catch(() => api.setAuthHeader())
+            .finally(() =>
+                dispatch(getAuthUser())
+                    .unwrap()
+                    .catch(() => setIsActive(true)))
     }, [])
 
     useEffect(() => {
@@ -165,7 +172,7 @@ export const Auth: FC = () => {
                             </div>
 
                             <div className="body-medium on-surface-variant-text">
-                                {'Please sign in to access your photos'.localize()}
+                                {'Please sign in to access site content'.localize()}
                             </div>
 
                             <MdFormikField name="email" type="email" icon="mail" label={'Email'.localize()} />
@@ -191,7 +198,7 @@ export const Auth: FC = () => {
                             </div>
 
                             <div className="body-medium on-surface-variant-text">
-                                {'Register to upload your photos without anyone else having access to them'.localize()}
+                                {'An email with a confirmation code will be sent to the email address you provided during registration'.localize()}
                             </div>
 
                             <MdFormikField name="email" type="email" icon="mail" label={'Email'.localize()} />
