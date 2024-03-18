@@ -4,6 +4,7 @@ import { MdNavigationBar } from "@material/web/labs/navigationbar/navigation-bar
 import { MdNavigationTab } from "@material/web/labs/navigationtab/navigation-tab"
 import { MdOutlinedTextField } from "@material/web/textfield/outlined-text-field"
 import { MdFilledIconButton } from "@material/web/iconbutton/filled-icon-button"
+import { MdFilledTonalButton } from "@material/web/button/filled-tonal-button"
 import { MdCircularProgress } from "@material/web/progress/circular-progress"
 import { MdOutlinedButton } from "@material/web/button/outlined-button"
 import { MdFilledButton } from "@material/web/button/filled-button"
@@ -48,6 +49,7 @@ declare global {
             ['md-filled-tonal-icon-button']: WebComponent<MdFilledTonalIconButton>
             ['md-outlined-icon-button']: WebComponent<MdOutlinedIconButton>
             ['md-outlined-text-field']: WebComponent<MdOutlinedTextField>
+            ['md-filled-tonal-button']: WebComponent<MdFilledTonalButton>
             ['md-filled-icon-button']: WebComponent<MdFilledIconButton>
             ['md-circular-progress']: WebComponent<MdCircularProgress>
             ['md-outlined-button']: WebComponent<MdOutlinedButton>
@@ -69,6 +71,7 @@ declare global {
             ['md-tabs']: WebComponent<MdTabs>
             ['md-menu']: WebComponent<MdMenu>
             ['md-fab']: WebComponent<MdFab>
+
         }
     }
 }
