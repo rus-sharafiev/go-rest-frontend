@@ -1,17 +1,30 @@
 header {
     position: fixed;
-    inset: 0 0 auto;
     height: 48px;
+    inset: 0;
 
     display: grid;
     grid: 1fr / min-content 1fr min-content;
     place-items: center;
     padding: 12px 24px;
+    z-index: 2;
 
     --md-elevation-level: 0;
+    backdrop-filter: blur(0) saturate(100%);
+    transition: .12s ease-in-out;
 
     svg {
         height: 100%;
+        opacity: 0;
+        transition: opacity .14s ease-in-out;
+    }
+
+    &.elevated {
+        --md-elevation-level: 2;
+
+        svg {
+            opacity: 1;
+        }
     }
 
     md-icon-button {

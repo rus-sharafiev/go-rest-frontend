@@ -1,0 +1,45 @@
+.nav-container {
+    grid-area: nav;
+
+    width: 220px;
+    padding: 12px;
+
+    svg {
+        height: 80px;
+        margin: 12px;
+    }
+
+    nav {
+        display: grid;
+        grid-auto-rows: 38px;
+        gap: 12px;
+
+        position: sticky;
+        top: 34px;
+        padding-top: 28px;
+
+        .nav-button {
+            display: grid;
+            grid: 1fr / 24px 1fr;
+            gap: 12px;
+            align-items: center;
+
+            padding: 0 8px;
+            border-radius: 9999px;
+
+            cursor: pointer;
+            position: relative;
+
+            transition: .14s ease-in-out;
+
+            &.active {
+                padding: 0 16px;
+            }
+
+            &:not(.active):hover {
+                padding: 0 16px;
+                color: var(--md-sys-color-primary);
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
-export const Logo: React.FC = () => {
+export const Logo: React.FC<{ primary: string, secondary?: string, className?: string }> = ({ primary, secondary, className }) => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 125.75">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 125.75" className={className}>
             <defs>
                 <linearGradient id="d" x1="215.54" y1="-31.3" x2="279.79" y2="144.16" gradientUnits="userSpaceOnUse">
-                    <stop offset="0" stopColor="#1475ff" />
-                    <stop offset="1" stopColor="#1349fc" />
+                    <stop offset="0" stopColor={primary} />
+                    <stop offset="1" stopColor={secondary ?? primary} />
                 </linearGradient>
             </defs>
             <path
@@ -16,6 +16,7 @@ export const Logo: React.FC = () => {
                         28.02,28.02,28.02,28.02-12.55,28.02-28.02S487.45,0,471.98,0Zm-80.39,111.63l40.07-69.4c7.74-13.4,3.15-30.54-10.26-38.28h0c-13.4-7.74-30.54-3.15-38.28,
                         10.26l-40.07,69.4c-7.74,13.4-3.15,30.54,10.26,38.28h0c13.4,7.74,30.54,3.15,38.28-10.26Z"
                 fill="url(#d)"
+                filter="url(#inset-shadow)"
                 fillRule="evenodd" />
         </svg>
     )

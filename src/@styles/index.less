@@ -17,14 +17,24 @@
 
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
     -webkit-user-drag: none;
-    overscroll-behavior: none;
 
     --md-icon-font: 'Material Symbols Rounded';
     --md-focus-ring-color: transparent;
 
     --md-elevation-shadow-color: gray;
+
+    @supports (scrollbar-width: thin) {
+        scrollbar-width: thin;
+    }
+
+    @supports (overscroll-behavior: none) {
+        overscroll-behavior: none;
+    }
+
+    @supports (-webkit-tap-highlight-color: transparent) {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
 a {
@@ -52,20 +62,41 @@ md-icon[filled] {
 
 // --------------------------------------------------------------------------------
 
+
 body {
     margin: 0;
-    min-height: 100vh;
     background-color: var(--md-sys-color-background);
 }
 
 #root {
     filter: none;
     transition: filter .48s ease-in-out;
+    height: 100vh;
+    overflow: auto;
+
+    @supports (scrollbar-gutter: stable) {
+        scrollbar-gutter: stable;
+    }
+
+    display: grid;
+    grid: 1fr / min-content 1fr;
+    grid-template-areas: "nav main";
 
     &.blured {
         filter: blur(15px) saturate(1.5);
+    }
+
+    &.scrolled header {
+        --md-elevation-level: 2;
+        backdrop-filter: blur(10px) saturate(150%);
+
+        svg {
+            opacity: 1;
+        }
     }
 }
 
 @import './auth-dialog.less';
 @import './header.less';
+@import './main.less';
+@import './nav.less';

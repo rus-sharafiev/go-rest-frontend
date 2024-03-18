@@ -6,6 +6,9 @@ import { RouterProvider } from 'react-router-dom'
 
 // --------------------------------------------------------------------------------
 
+window.ondragover = function (e) { e.preventDefault(); return false }
+window.ondrop = function (e) { e.preventDefault(); return false }
+
 createRoot(document.getElementById('root') as HTMLElement)
     .render(
         <Provider store={store}>

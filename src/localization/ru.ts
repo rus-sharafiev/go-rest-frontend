@@ -25,4 +25,10 @@ export const ru: Record<string, string> = {
     'Code is valid until': 'Код действителен',
     'Log Out': 'Выйти',
     'Settings': 'Настройки',
+    'Account settings': 'Настройки аккаунта',
+    'Photo converter': 'Фото конвертер',
+    'First name': 'Имя',
+    'Last name': 'Фамилия',
+    'Phone number': 'Номер телефона',
+    'Save': 'Сохранить',
 }
