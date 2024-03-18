@@ -23,15 +23,15 @@ export interface UserWithToken {
 }
 
 export interface User {
-    id: number,
+    id: number
     email: string
     firstName: string | null
     lastName: string | null
     phone: string | null
-    avatar: string | null
+    avatar: string | File | null
     access: Access,
     createdAt: string
-    updatedAt: null
+    updatedAt: string | null
 }
 
 export enum Access {

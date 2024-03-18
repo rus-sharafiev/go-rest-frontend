@@ -51,6 +51,15 @@ export const getAuthUser = createAsyncThunk('auth/user', async (_, thunkAPI) => 
     }
 })
 
+export const updateAuthUser = createAsyncThunk('user/update', async (user: Partial<User>, thunkAPI) => {
+    try {
+        return await api.patch(ApiRoutes.USERS + user.id, user) as Promise<User>
+    } catch (e) {
+        const error = e as FetchApiError
+        return thunkAPI.rejectWithValue(error)
+    }
+})
+
 // --------------------------------------------------------------------------------
 
 const initialState: {
@@ -129,6 +138,17 @@ const authSlice = createSlice({
                 state.user = initialState.user
                 state.isAuthenticated = false
             })
+
+            // UPDATE USER --------------------------------------------------------
+            .addCase(updateAuthUser.fulfilled, (state, action) => {
+                state.user = action.payload
+            })
+            .addCase(updateAuthUser.rejected, (state) => {
+                // state.isLoading = false
+                // state.user = initialState.user
+                // state.isAuthenticated = false
+            })
+
     },
 })
 

@@ -1,0 +1,64 @@
+.account {
+    display: grid;
+    justify-content: center;
+
+    --md-outlined-text-field-disabled-input-text-opacity: 1;
+    --md-outlined-text-field-disabled-label-text-opacity: 1;
+
+    form {
+        display: grid;
+        grid: 1fr / repeat(2, minmax(150px, 300px));
+        gap: 24px;
+
+        div:first-of-type {
+            display: grid;
+            max-width: 300px;
+            gap: 16px;
+        }
+
+        div:last-of-type {
+            display: grid;
+            justify-items: center;
+
+            .avatar {
+                width: 100%;
+                max-width: 200px;
+                aspect-ratio: 1 / 1;
+
+                display: grid;
+                justify-items: center;
+                align-items: center;
+
+                border: thin solid var(--md-sys-color-outline-variant);
+                border-radius: 9999px;
+                overflow: hidden;
+
+                position: relative;
+
+                &.hovered {
+                    border: 2px solid var(--md-sys-color-primary);
+                }
+
+                cursor: pointer;
+
+                input,
+                img {
+                    position: absolute;
+                    inset: 0;
+                    display: grid;
+                    place-items: center;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+        md-filled-button {
+            justify-self: start;
+        }
+    }
+}
