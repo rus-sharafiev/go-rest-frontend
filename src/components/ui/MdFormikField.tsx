@@ -21,7 +21,7 @@ type MdFormikFieldProps = WebComponent<MdOutlinedTextField> & {
  * @author Rus Sharafiev <https://github.com/rus-sharafiev>
  */
 export const MdFormikField: FC<MdFormikFieldProps> = ({ name, icon, type, ...props }) => {
-    const [_, { error }, { setValue }] = useField(name)
+    const [{ value }, { error }, { setValue }] = useField(name)
     const { submitForm } = useFormikContext()
 
     const fieldRef = useRef<MdOutlinedTextField>(null)
@@ -55,6 +55,7 @@ export const MdFormikField: FC<MdFormikFieldProps> = ({ name, icon, type, ...pro
             onKeyUp={handleSubmit}
             type={isNumberField ? undefined : type}
             input-mode={isNumberField ? 'numeric' : undefined}
+            value={value}
             {...props}
         >
             {icon &&
